@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->bigInteger('category_id');
-            $table->timestamp('end_date');
+            $table->timestamp('end_date')->nullable();
             $table->boolean('importance');
             $table->bigInteger('user_id');
             $table->timestamps();
