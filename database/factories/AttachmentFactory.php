@@ -14,7 +14,7 @@ class AttachmentFactory extends Factory
     public function definition()
     {
         return [
-            'file' => $this->faker->image(public_path('attachments'),640, 480),
+            'file' => $this->faker->loremflickr('uploads', 640, 480),
         ];
     }
 }
