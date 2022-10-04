@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Faker\Factory;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 use Faker\Generator;
 
@@ -29,6 +30,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        JsonResource::withoutWrapping();
     }
 }

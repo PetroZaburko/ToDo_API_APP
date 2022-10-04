@@ -33,4 +33,16 @@ class Task extends Model
     {
         return $this->hasMany(Attachment::class);
     }
+
+    public function toggleStatus()
+    {
+        $this->status = !$this->status;
+        $this->save();
+    }
+
+    public function delete()
+    {
+        $this->attachments()->delete();
+        return parent::delete();
+    }
 }
