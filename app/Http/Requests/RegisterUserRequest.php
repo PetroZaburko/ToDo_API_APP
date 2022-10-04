@@ -2,8 +2,7 @@
 
 namespace App\Http\Requests;
 
-
-class StoreTaskRequest extends ValidationRequest
+class RegisterUserRequest extends ValidationRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +22,10 @@ class StoreTaskRequest extends ValidationRequest
     public function rules()
     {
         return [
-            'title'         => ['required', 'max:50'],
-            'description'   => ['min:5'],
-            'importance'    => ['boolean'],
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
         ];
     }
-
 }
