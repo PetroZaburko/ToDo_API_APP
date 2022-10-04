@@ -16,11 +16,12 @@ class TaskFactory extends Factory
     public function definition()
     {
         return [
-            'title' =>          $this->faker->sentence(),
-            'description' =>    $this->faker->sentences(3, true),
-            'category_id' =>    $this->faker->numberBetween(1, 2),
-            'end_date' =>       $this->faker->boolean ? $this->faker->dateTimeBetween('+2 days', '+14 days') : null,
-            'importance' =>     $this->faker->numberBetween(1, 0),
+            'title'         => $this->faker->sentence(),
+            'description'   => $this->faker->sentences(3, true),
+            'category_id'   => $this->faker->numberBetween(1, 2),
+            'end_date'      => $this->faker->boolean ? $this->faker->dateTimeBetween('+2 days', '+14 days') : null,
+            'importance'    => $this->faker->numberBetween(1, 0),
+            'status'        => $this->faker->boolean,
         ];
     }
 
