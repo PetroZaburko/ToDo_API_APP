@@ -6,56 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "all tasks",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tasks"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "one task",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks/12",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tasks",
-						"12"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create task",
+			"name": "register user",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"accept-encoding": true
@@ -73,6 +24,195 @@
 				],
 				"body": {
 					"mode": "raw",
+					"raw": "{\n    \"name\": \"Petro\",\n    \"surname\": \"Zaburko\",\n    \"email\": \"gigabyte_tech@ukr.net\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://zaburko.softwars.com.ua/api/v1/register",
+					"protocol": "https",
+					"host": [
+						"zaburko",
+						"softwars",
+						"com",
+						"ua"
+					],
+					"path": [
+						"api",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"gigabyte_tech@ukr.net\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://zaburko.softwars.com.ua/api/v1/login",
+					"protocol": "https",
+					"host": [
+						"zaburko",
+						"softwars",
+						"com",
+						"ua"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout user",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|fLBTkTJnQQG2pZczQ61x7x8B2EQ8A04BJPFBS6H5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://zaburko.softwars.com.ua/api/v1/logout",
+					"protocol": "https",
+					"host": [
+						"zaburko",
+						"softwars",
+						"com",
+						"ua"
+					],
+					"path": [
+						"api",
+						"v1",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all tasks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|fLBTkTJnQQG2pZczQ61x7x8B2EQ8A04BJPFBS6H5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://zaburko.softwars.com.ua/api/v1/tasks",
+					"protocol": "https",
+					"host": [
+						"zaburko",
+						"softwars",
+						"com",
+						"ua"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "one task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|fLBTkTJnQQG2pZczQ61x7x8B2EQ8A04BJPFBS6H5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://zaburko.softwars.com.ua/api/v1/tasks/1",
+					"protocol": "https",
+					"host": [
+						"zaburko",
+						"softwars",
+						"com",
+						"ua"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create task",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|fLBTkTJnQQG2pZczQ61x7x8B2EQ8A04BJPFBS6H5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
 					"raw": "{\n    \"title\": \"test\",\n    \"description\": \"test description\",\n    \"category_id\": 1,\n    \"importance\": 1,\n    \"user_id\": 1,\n    \"status\": 1\n}",
 					"options": {
 						"raw": {
@@ -81,15 +221,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks",
-					"protocol": "http",
+					"raw": "https://zaburko.softwars.com.ua/api/v1/tasks",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"zaburko",
+						"softwars",
+						"com",
+						"ua"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"v1",
@@ -107,6 +246,16 @@
 				}
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|fLBTkTJnQQG2pZczQ61x7x8B2EQ8A04BJPFBS6H5",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PATCH",
 				"header": [
 					{
@@ -117,7 +266,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"test_test\",\n    \"description\": \"test description_test\"\n}",
+					"raw": "{\n    \"title\": \"test\",\n    \"description\": \"test description_test\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -125,20 +274,19 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks/205",
-					"protocol": "http",
+					"raw": "https://zaburko.softwars.com.ua/api/v1/tasks/200",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"zaburko",
+						"softwars",
+						"com",
+						"ua"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"v1",
 						"tasks",
-						"205"
+						"200"
 					]
 				}
 			},
@@ -152,6 +300,16 @@
 				}
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|fLBTkTJnQQG2pZczQ61x7x8B2EQ8A04BJPFBS6H5",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PATCH",
 				"header": [],
 				"body": {
@@ -164,20 +322,19 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks/12/status",
-					"protocol": "http",
+					"raw": "https://zaburko.softwars.com.ua/api/v1/tasks/200/status",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"zaburko",
+						"softwars",
+						"com",
+						"ua"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"v1",
 						"tasks",
-						"12",
+						"200",
 						"status"
 					]
 				}
@@ -192,6 +349,16 @@
 				}
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|fLBTkTJnQQG2pZczQ61x7x8B2EQ8A04BJPFBS6H5",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"body": {
@@ -204,20 +371,19 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks/12",
-					"protocol": "http",
+					"raw": "https://zaburko.softwars.com.ua/api/v1/tasks/200",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"zaburko",
+						"softwars",
+						"com",
+						"ua"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"v1",
 						"tasks",
-						"12"
+						"200"
 					]
 				}
 			},
