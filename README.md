@@ -32,7 +32,7 @@ php artisan db:seed
 ## How to use
 
 List of all endpoints (method  |  URI  |  description):
-```shell script
+```
   POST      | api/v1/login                | login
             |                             | pass:     email & password in request body in json format
             |                             | return:   user and bearer token, or validation errors
