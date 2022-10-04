@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class AttachmentResource extends JsonResource
 {
@@ -16,7 +17,7 @@ class AttachmentResource extends JsonResource
     {
         return [
             'id'            => $this->id,
-            'file'          => $this->file,
+            'file'          => Storage::disk('attachments')->path($this->file),
             'created_at'    => $this->created_at,
             'updated_at'    => $this->updated_at,
         ];
