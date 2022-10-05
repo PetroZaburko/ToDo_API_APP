@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 
+use Illuminate\Support\Facades\Auth;
+
 class StoreTaskRequest extends ValidationRequest
 {
     /**
@@ -27,6 +29,11 @@ class StoreTaskRequest extends ValidationRequest
             'description'   => ['min:5'],
             'importance'    => ['boolean'],
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge(['user_id' => Auth::id()]);
     }
 
 }
