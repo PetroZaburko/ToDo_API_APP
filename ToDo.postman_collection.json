@@ -213,7 +213,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"test\",\n    \"description\": \"test description\",\n    \"category_id\": 1,\n    \"importance\": 1,\n    \"user_id\": 1,\n    \"status\": 1\n}",
+					"raw": "{\n    \"title\": \"test\",\n    \"description\": \"test description\",\n    \"category_id\": 1,\n    \"importance\": 1,\n    \"status\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
