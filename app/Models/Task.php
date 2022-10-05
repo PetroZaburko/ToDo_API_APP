@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Task extends Model
 {
@@ -38,6 +39,11 @@ class Task extends Model
     {
         $this->status = !$this->status;
         $this->save();
+    }
+
+    public function scopeOfUser($query)
+    {
+        return $query->where('user_id', Auth::id());
     }
 
     public function delete()
