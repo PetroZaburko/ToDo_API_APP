@@ -10,6 +10,24 @@ use Illuminate\Http\Response;
 
 class TasksController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Task::class, 'task');
+    }
+
+    protected function resourceAbilityMap()
+    {
+        return [
+            'index'     => 'viewAny',
+            'show'      => 'view',
+            'store'     => 'create',
+            'update'    => 'update',
+            'destroy'   => 'delete',
+            'status'    => 'status'
+        ];
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +35,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::ofUser()->get();
         return TaskResource::collection($tasks);
     }
 
