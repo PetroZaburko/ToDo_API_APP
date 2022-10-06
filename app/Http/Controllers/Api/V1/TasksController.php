@@ -57,14 +57,12 @@ class TasksController extends Controller
      * @param StoreTaskRequest $request
      * @return TaskResource
      */
-    public function store(AttachmentsRequest $request)
+    public function store(StoreTaskRequest $request)
     {
-//        ($test = $request->input('attachments.0.file'));
-//        [0]['file']);
-        $test = $request->file('attachments');
-        dd($test);
-
         $task = Task::create($request->all());
+        if(!empty($request->input('attachments'))) {
+            $this->storeTaskAttachments($task->id);
+        }
         return new TaskResource($task);
     }
 
@@ -103,5 +101,10 @@ class TasksController extends Controller
     {
         $task->toggleStatus();
         return response(null, 204);
+    }
+
+    protected function storeTaskAttachments($id)
+    {
+
     }
 }

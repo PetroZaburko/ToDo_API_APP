@@ -17,7 +17,7 @@ class AttachmentsRequest extends FormRequest
             $ext = explode(';base64',$value['file']);
             $ext = explode('/',$ext[0]);
             $ext = $ext[1];
-            $result["attachments.$key.file"] =  Str::random(6) . $key ."." . $ext;
+            $result["attachments.$key.file"] =  Str::random(10) . $key ."." . $ext;
         }
         return $result;
     }
@@ -41,10 +41,7 @@ class AttachmentsRequest extends FormRequest
     {
         return [
             "attachments"    => ['array'],
-//            'attachments.*.file' => ['file', 'image']
-//            "attachments"    => ['array'],
-//            "attachments"    => ['array'],
-//            "attachments.file"  => ['string'],
+            'attachments.*.file' => ['file', 'image'],
         ];
     }
 }
