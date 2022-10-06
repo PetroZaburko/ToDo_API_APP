@@ -17,7 +17,8 @@ class AttachmentResource extends JsonResource
     {
         return [
             'id'            => $this->id,
-            'file'          => Storage::disk('attachments')->path($this->file),
+//            'file'          => Storage::disk('attachments')->path($this->file),
+            'file'          => $this->file,
             'created_at'    => $this->created_at,
             'updated_at'    => $this->updated_at,
         ];
