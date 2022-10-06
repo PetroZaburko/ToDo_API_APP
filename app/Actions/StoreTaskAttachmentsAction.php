@@ -6,21 +6,20 @@ namespace App\Actions;
 
 use App\Http\Requests\AttachmentsRequest;
 use App\Models\Attachment;
-use Illuminate\Support\Arr;
 
 class StoreTaskAttachmentsAction
 {
-    protected $files;
+    protected $request;
 
     public function __construct(AttachmentsRequest $request)
     {
-        $this->files = Arr::pluck($request->file('attachments'), 'file');
+        $this->request = $request;
     }
 
     public function store($task_id)
     {
-        foreach ($this->files as $file) {
-            $attachment = $file;
+        foreach ($this->request->file('attachments') as $file) {
+            $attachment = $file['file'];
             $file = $attachment->store('/uploads', 'attachments');
             Attachment::create([
                 'file' => $file,
