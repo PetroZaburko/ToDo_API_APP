@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Actions\StoreTaskAttachmentsAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttachmentsRequest;
 use App\Http\Requests\StoreTaskRequest;
@@ -55,13 +56,14 @@ class TasksController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreTaskRequest $request
+     * @param StoreTaskAttachmentsAction $action
      * @return TaskResource
      */
-    public function store(StoreTaskRequest $request)
+    public function store(StoreTaskRequest $request, StoreTaskAttachmentsAction $action)
     {
         $task = Task::create($request->all());
         if(!empty($request->input('attachments'))) {
-            $this->storeTaskAttachments($task->id);
+            $action->store($task->id);
         }
         return new TaskResource($task);
     }
@@ -103,8 +105,8 @@ class TasksController extends Controller
         return response(null, 204);
     }
 
-    protected function storeTaskAttachments($id)
+    protected function storeTaskAttachments(AttachmentsRequest $request, $id)
     {
-
+        dd($id, $request->file('attachments'));
     }
 }
