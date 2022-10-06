@@ -59,7 +59,9 @@ class TasksController extends Controller
      */
     public function store(AttachmentsRequest $request)
     {
-        ($test = $request->file('attachments'));
+//        ($test = $request->input('attachments.0.file'));
+//        [0]['file']);
+        $test = $request->file('attachments');
         dd($test);
 
         $task = Task::create($request->all());
