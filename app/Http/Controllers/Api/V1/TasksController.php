@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AttachmentsRequest;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
@@ -56,8 +57,11 @@ class TasksController extends Controller
      * @param StoreTaskRequest $request
      * @return TaskResource
      */
-    public function store(StoreTaskRequest $request)
+    public function store(AttachmentsRequest $request)
     {
+        ($test = $request->file('attachments'));
+        dd($test);
+
         $task = Task::create($request->all());
         return new TaskResource($task);
     }
