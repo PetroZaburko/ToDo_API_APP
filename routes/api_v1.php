@@ -21,6 +21,7 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('tasks', TasksController::class);
+    Route::post('tasks/fill', [TasksController::class, 'fill'])->name('tasks.fill');
     Route::patch('tasks/{task}/status',[TasksController::class, 'status'])->name('tasks.status');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });

@@ -45,6 +45,17 @@ class TaskPolicy
     }
 
     /**
+     * Determine whether the user can fill models.
+     *
+     * @param User $user
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function fill(User $user)
+    {
+        return true;
+    }
+
+    /**
      * Determine whether the user can update the model.
      *
      * @param User $user

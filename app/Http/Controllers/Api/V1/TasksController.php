@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Actions\StoreTaskAttachmentsAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FillTaskRequest;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
@@ -22,12 +23,21 @@ class TasksController extends Controller
             'index'     => 'viewAny',
             'show'      => 'view',
             'store'     => 'create',
+            'fill'      => 'fill',
             'update'    => 'update',
             'destroy'   => 'delete',
             'status'    => 'status'
         ];
     }
 
+    protected function resourceMethodsWithoutModels()
+    {
+        return [
+            'index',
+            'store',
+            'fill',
+        ];
+    }
 
     /**
      * Display a listing of the resource.
@@ -60,11 +70,18 @@ class TasksController extends Controller
      */
     public function store(StoreTaskRequest $request, StoreTaskAttachmentsAction $action)
     {
+        dd($request->all());
+
         $task = Task::create($request->all());
         if(!empty($files = $request->file('attachments'))) {
             $action->store($files, $task->id);
         }
         return new TaskResource($task);
+    }
+
+    public function fill(FillTaskRequest $request)
+    {
+        dd($request->all());
     }
 
     /**
