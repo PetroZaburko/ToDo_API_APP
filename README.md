@@ -53,6 +53,10 @@ List of all endpoints (method  |  URI  |  description):
             |                             | pass:      user bearer token, data for new task in json format in request body 
             |                             | return:    created task data, or validation errors
 ------------------------------------------------------------------------------------------------------------------------
+  POST      | api/v1/tasks/fill           | create several new tasks 
+            |                             | pass:      user bearer token, array of new tasks in json format in request body 
+            |                             | return:    response status 200, or validation errors
+------------------------------------------------------------------------------------------------------------------------
   GET       | api/v1/tasks/{id}           | get one task by id
             |                             | pass:      user bearer token
             |                             | return:    one task data by id
