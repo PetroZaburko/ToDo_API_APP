@@ -16,9 +16,15 @@ class Task extends Model
         'category_id',
         'end_date',
         'importance',
-        'user_id',
         'status',
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        $this->user_id = Auth::id();
+        parent::__construct($attributes);
+    }
+
 
     public function user()
     {

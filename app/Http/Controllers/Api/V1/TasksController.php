@@ -70,8 +70,6 @@ class TasksController extends Controller
      */
     public function store(StoreTaskRequest $request, StoreTaskAttachmentsAction $action)
     {
-        dd($request->all());
-
         $task = Task::create($request->all());
         if(!empty($files = $request->file('attachments'))) {
             $action->store($files, $task->id);
@@ -79,9 +77,22 @@ class TasksController extends Controller
         return new TaskResource($task);
     }
 
-    public function fill(FillTaskRequest $request)
+    /**
+     *  Store several newly created resource in storage.
+     *
+     * @param FillTaskRequest $request
+     * @param StoreTaskAttachmentsAction $action
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
+    public function fill(FillTaskRequest $request, StoreTaskAttachmentsAction $action)
     {
-        dd($request->all());
+        foreach ($request->all()['tasks'] as $item) {
+            $task = Task::create($item);
+            if (array_key_exists('attachments', $item)) {
+                $action->store($item['attachments'], $task->id);
+            }
+        }
+        return response(null, 200);
     }
 
     /**

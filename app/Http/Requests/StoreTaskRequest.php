@@ -2,13 +2,12 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Support\Facades\Auth;
 use ProtoneMedia\LaravelMixins\Request\ConvertsBase64ToFiles;
 
 class StoreTaskRequest extends ValidationRequest
 {
 
-    use TaskRules, ConvertsBase64ToFiles { prepareForValidation as protected prepareForValidationTrait; }
+    use TaskRules, ConvertsBase64ToFiles;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -28,36 +27,11 @@ class StoreTaskRequest extends ValidationRequest
     public function rules()
     {
         return $this->taskRules();
-
-//        return [
-//            'title'                 => ['required', 'min:3', 'max:50'],
-//            'description'           => ['min:5'],
-//            'importance'            => ['boolean'],
-//            "attachments"           => ['array'],
-//            'attachments.*.file'    => ['file', 'image'],
-//        ];
-    }
-
-    protected function prepareForValidation()
-    {
-        $this->merge(['user_id' => Auth::id()]);
-        return $this->prepareForValidationTrait();
     }
 
     protected function base64FileKeys()
     {
         return $this->prepareFileKeys('attachments');
-//        $result = [];
-//
-//        if (!empty($this->input('attachments'))) {
-//            foreach ($this->input('attachments') as $key => $value) {
-//                $ext = explode(';base64', $value['file']);
-//                $ext = explode('/', $ext[0]);
-//                $ext = $ext[1];
-//                $result["attachments.$key.file"] =  Str::random(10) . "." . $ext;
-//            }
-//        }
-//        return $result;
     }
 
 }

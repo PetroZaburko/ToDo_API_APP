@@ -19,21 +19,6 @@ trait TaskRules
         ];
     }
 
-//    protected function prepareFileKeys()
-//    {
-//        $result = [];
-//
-//        if (!empty($this->input('attachments'))) {
-//            foreach ($this->input('attachments') as $key => $value) {
-//                $ext = explode(';base64', $value['file']);
-//                $ext = explode('/', $ext[0]);
-//                $ext = $ext[1];
-//                $result["attachments.$key.file"] =  Str::random(10) . "." . $ext;
-//            }
-//        }
-//        return $result;
-//    }
-
     protected function prepareFileKeys($fileKey)
     {
         $result = [];
@@ -46,10 +31,7 @@ trait TaskRules
                 $result["$fileKey.$key.file"] =  Str::random(10) . "." . $ext;
             }
         }
-//        dd($result);
         return $result;
     }
-
-
 
 }
