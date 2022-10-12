@@ -1,6 +1,6 @@
 ## About
 
-API for ToDo list.
+API for ToDo application.
 
 ## How to configure
 
